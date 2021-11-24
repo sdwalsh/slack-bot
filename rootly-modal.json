@@ -1,0 +1,88 @@
+{
+  "type": "modal",
+  "title": {
+    "type": "plain_text",
+    "text": "Rootly Interview Bot",
+    "emoji": true
+  },
+  "submit": {
+    "type": "plain_text",
+    "text": "Submit",
+    "emoji": true
+  },
+  "close": {
+    "type": "plain_text",
+    "text": "Cancel",
+    "emoji": true
+  },
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "Create an Incident",
+        "emoji": true
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "input",
+      "optional": false,
+      "element": {
+        "type": "plain_text_input",
+        "action_id": "plain_text_input-action"
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Title",
+        "emoji": true
+      }
+    },
+    {
+      "type": "input",
+      "optional": false,
+      "element": {
+        "type": "static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Select an item",
+          "emoji": true
+        },
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "sev0",
+              "emoji": true
+            },
+            "value": "sev0"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "sev1",
+              "emoji": true
+            },
+            "value": "sev1"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "sev2",
+              "emoji": true
+            },
+            "value": "sev2"
+          }
+        ],
+        "action_id": "static_select-action"
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Severity",
+        "emoji": true
+      }
+    }
+  ]
+}
