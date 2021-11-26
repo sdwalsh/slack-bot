@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"github.com/google/uuid"
@@ -66,10 +67,10 @@ func main() {
 		if err != nil {
 			return echo.NewHTTPError(http.StatusUnauthorized, "failed to ensure request came from slack")
 		}
-
+		c.Request().Body = ioutil.NopCloser(bytes.NewReader(body))
 		// Unmarshal and grab the data we need
 		var callback slack.InteractionCallback
-		err = json.Unmarshal([]byte(c.Request().FormValue("payload")), &callback)
+		err = json.Unmarshal([]byte(c.FormValue("payload")), &callback)
 		if err != nil {
 			return echo.NewHTTPError(http.StatusBadRequest, "Unexpected Format")
 		}
@@ -115,6 +116,7 @@ func main() {
 func openModal(api *slack.Client, s slack.SlashCommand) {
 	_, err := api.OpenView(s.TriggerID, viewRequest)
 	if err != nil {
+		fmt.Printf("error creating view: %s", err)
 	}
 }
 
